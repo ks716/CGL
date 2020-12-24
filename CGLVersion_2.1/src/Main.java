@@ -9,7 +9,7 @@ public class Main {
 		System.out.println("Input size of board: ");
 		int size = scan.nextInt();
 		Board game = new Board();
-		game.size =size;
+		game.setSize(size);
 		game.createBoard();
 
 		System.out.println("How many live cells to start: ");
