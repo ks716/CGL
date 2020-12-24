@@ -10,6 +10,7 @@ public class Board {
 	Cell[][] board2;
 	
 	
+	
 	Board() {
 		
 		
@@ -35,30 +36,40 @@ public class Board {
 	}
 	
 	void printBoard() {
+		String res = "";
+		res+="*** Generation: "+this.iter+" ***\n";
 		for (int i=0;i<board.length;i++) {
 			for (int j=0;j<board.length;j++) {
 				if (j<board.length-1) {
 					if (board[i][j].status == false) {
-						System.out.print(".");
+						res+=". ";
+						//System.out.print("o");
 					}else {
-						System.out.print("*");
+						res+="x ";
+						//System.out.print("x");
 					}
 				}else {
 					if (board[i][j].status == false) {
-						System.out.print("."+"\n");
+						res+="."+"\n";
+						//System.out.print("."+"\n");
 					}else {
-						System.out.print("*"+"\n");
+						res+="x"+"\n";
+						//System.out.print("*"+"\n");
 					}
 				}
 			}
 		}
+		//res+="\r";
+		
+		System.out.print(res);
+		//System.out.print("\r");
 		
 	}
 	
 	void nextGen() {
 		this.iter+=1;
 		this.board2 = new Cell[this.size][this.size];
-		System.out.println(this.board.length);
+		//System.out.println(this.board.length);
 		for (int i=0;i<this.size;i++) {
 			for (int j=0;j<this.size;j++) {
 //				this.board[i][j].row = i;
