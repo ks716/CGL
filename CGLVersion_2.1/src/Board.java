@@ -180,5 +180,10 @@ public class Board {
 		
 		return count;
 	}
+	
+	
+	void setSize(int size) {
+		this.size = size;
+	}
 
 }
