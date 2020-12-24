@@ -5,8 +5,6 @@ public class TestJunit {
 
    @Test
    public void testMainOne() {
-//	   ComplexNumber cn1 = new ComplexNumber(3, 4);
-//	   ComplexNumber cn2 = new ComplexNumber(3, -8);
 	   Board board = new Board();
 	   board.setSize(5);
        System.out.println("======TEST ONE EXECUTED=======");
@@ -17,10 +15,8 @@ public class TestJunit {
    public void testMainTwo() {
 	   Cell cell = new Cell();
 	   cell.setStatus(true);
-//	   ComplexNumber cn1 = new ComplexNumber(3, 4);
-//	   ComplexNumber cn2 = new ComplexNumber(4, -1);
 	   System.out.println("======TEST TWO EXECUTED=======");
-       Assertions.assertEquals(true, cell.status);
+       Assertions.assertEquals(true, cell.getStatus());
    }
    
    @Test
@@ -28,8 +24,6 @@ public class TestJunit {
 	   Board obj = new Board();
 	   obj.setSize(10);
 	   obj.createBoard();
-//	   ComplexNumber cn1 = new ComplexNumber(3, 4);
-//	   ComplexNumber cn2 = new ComplexNumber(5, 6);
 	   System.out.println("======TEST THREE EXECUTED=======");
        Assertions.assertEquals(10, obj.board.length);
        Assertions.assertEquals(10, obj.board[0].length);
