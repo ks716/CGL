@@ -73,6 +73,30 @@ public class TestJunit {
         obj.board[0][0].setStatus(true);
         Assertions.assertEquals(true, obj.board[0][0].status);
     }
+    
+    
+    /**
+     *  
+     *  Test to check if nextGen method is working properly
+     *
+     */
+    @Test
+    public void testMainFive() {
+        Board obj = new Board();
+        obj.setSize(10);
+        obj.createBoard();
+        obj.board[1][1].setStatus(true);
+        obj.board[1][2].setStatus(true);
+        
+        System.out.println("======TEST FIVE EXECUTED=======");
+        obj.printBoard();
+        Assertions.assertEquals("*** Generation: 0 ***\n. . . . . . . . . .\n. x x . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n", obj.res);
+        obj.nextGen();
+        obj.printBoard();
+        Assertions.assertEquals("*** Generation: 1 ***\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n. . . . . . . . . .\n", obj.res);
+        
+        
+    }
 }
 
 

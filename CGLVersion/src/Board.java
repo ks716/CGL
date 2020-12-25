@@ -22,6 +22,7 @@ public class Board {
 	int iter;
 	Cell[][] board;
 	Cell[][] board2;
+	String res;
 	
 	
 	/**
@@ -33,6 +34,7 @@ public class Board {
 	Board() {
 		this.size=0;
 		this.iter=0;
+		this.res="";
 	}
 
 
@@ -78,6 +80,7 @@ public class Board {
 				}
 			}
 		}
+		this.res = res;
 		System.out.print(res);
 	}
 	
