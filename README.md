@@ -1,2 +1,3 @@
 # CGL
-Conways Game of Life
+
+Conway's Game of Life - console version
