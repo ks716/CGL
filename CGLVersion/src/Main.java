@@ -31,21 +31,24 @@ public class Main {
 
 
 		// Input size of board and board creation
-		System.out.println("Input size of board: ");
-		int size = scan.nextInt();
+		
+//		System.out.println("Input size of board: ");
+//		int size = scan.nextInt();
+		int size = 200;
 		Board game = new Board();
 		game.setSize(size);
 		game.createBoard();
 
 
 		// Enter number of starting cells and their positions
-		System.out.println("How many live cells to start: ");
-		int t = scan.nextInt();
+//		System.out.println("How many live cells to start: ");
+//		int t = scan.nextInt();
+		int t = 5;
 		for (int i=0;i<t;i++) {
 			if (i==0) {
 				System.out.print("Enter x,y of first cell: ");
 				String s = scan2.nextLine();
-				String s1[] = s.split(",");
+				String s1[] = s.split(" ");
 				int x = Integer.parseInt(s1[0]);
 				int y = Integer.parseInt(s1[1]);
 				game.board[x][y].setStatus(true);
@@ -53,7 +56,7 @@ public class Main {
 			}else {
 				System.out.print("Enter x,y of next cell: ");
 				String s = scan2.nextLine();
-				String s1[] = s.split(",");
+				String s1[] = s.split(" ");
 				int x = Integer.parseInt(s1[0]);
 				int y = Integer.parseInt(s1[1]);
 				game.board[x][y].setStatus(true);
