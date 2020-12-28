@@ -92,7 +92,7 @@ public class Board {
 	 * Takes the help of aliveNcells method to decide the next generation status.
 	 * 
 	 */
-	void nextGen() {
+	Board nextGen() {
 		this.iter+=1;
 		this.board2 = new Cell[this.size][this.size];  // new board instance
 
@@ -139,6 +139,7 @@ public class Board {
 		
 		// Prints the new board
 		this.printBoard();
+		return this;
 	}
 	
 	
