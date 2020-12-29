@@ -1,6 +1,6 @@
 # CGL
 
-## Conway's Game of Life -
+## Conway's Game of Life :
 
 ### update 0 : v2.0 console version
 
