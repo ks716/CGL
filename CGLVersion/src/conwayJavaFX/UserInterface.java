@@ -87,7 +87,7 @@ public class UserInterface {
 	private Pane myCanvas = new Pane();
 	private Board myBoard = new Board();
 	
-	private boolean toggle = true;					// A two-state attribute that specifies which
+	//private boolean toggle = true;					// A two-state attribute that specifies which
 													// is the previous Board and which is the new
 	
 	/**********************************************************************************************
@@ -292,7 +292,8 @@ public class UserInterface {
 		catch (Exception e)  {
 			// Since we have already done this check, this exception should never happen
 		}
-		
+		popCanvas(myCanvas);
+		window.getChildren().add(myCanvas);
 		button_Load.setDisable(true);				// Disable the Load button, since it is done
 		button_Start.setDisable(false);				// Enable the Start button
 	};												// and wait for the User to press it.
@@ -325,8 +326,14 @@ public class UserInterface {
 	 */
 	public void runSimulation(){
 		// Use the toggle to flip back and forth between the current generation and next generation boards.
-		
+		window.getChildren().remove(myCanvas);
 		// Your code goes here...
+		myCanvas = new Pane();
+		
+		myBoard.nextGen();
+		
+		popCanvas(myCanvas);
+		window.getChildren().add(myCanvas);
 	}
 
 	/**********
@@ -404,5 +411,18 @@ public class UserInterface {
 		// Should the execution reach here, the input file appears to be valid
 		errorMessage_FileContents = "";
 		return true;							// End of file found 
+	}
+	
+	
+	public void popCanvas(Pane pane) {
+		for (int x=1;x < myBoard.board.length;x++) {
+			for (int y=1;y < myBoard.board.length;y++) {
+				if (myBoard.board[x][y].getStatus()) {
+					Rectangle rect = new Rectangle(cellSize,cellSize,Color.BLACK);
+					rect.relocate(x*6, y*6);
+					pane.getChildren().add(rect);
+				}
+			}
+		}
 	}
 }
