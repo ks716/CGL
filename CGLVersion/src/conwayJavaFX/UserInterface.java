@@ -24,9 +24,11 @@ import javafx.scene.shape.Rectangle;
  * 
  * <p> Copyright: Lynn Robert Carter © 2018-05-06 </p>
  * 
+ * @author Sreenivas K
  * @author Lynn Robert Carter
  * 
- * @version 2.03	2018-05-07 An implementation baseline for JavaFX graphics
+ * 
+ * @version 3.1	
  * 
  */
 public class UserInterface {
@@ -84,8 +86,8 @@ public class UserInterface {
 	//private Board evenGameBoard =  new Board();	// The Board for even frames of the animation
 	//private Pane evenCanvas = new Pane();			// Pane that holds its graphical representation
 	
-	private Pane myCanvas = new Pane();
-	private Board myBoard = new Board();
+	private Pane myCanvas = new Pane();             // Single canvas to update single instance of board 
+	private Board myBoard = new Board();            // Board instance of current game
 	
 	//private boolean toggle = true;					// A two-state attribute that specifies which
 													// is the previous Board and which is the new
@@ -285,15 +287,16 @@ public class UserInterface {
 				y_pos = scanner_Line.nextInt();
 				myBoard.board[x_pos][y_pos].setStatus(true);
 				
-			}
-			
-			
+			}			
 		}
 		catch (Exception e)  {
 			// Since we have already done this check, this exception should never happen
 		}
-		popCanvas(myCanvas);
+		
+		// Update the board on gui
+		popCanvas();
 		window.getChildren().add(myCanvas);
+		
 		button_Load.setDisable(true);				// Disable the Load button, since it is done
 		button_Start.setDisable(false);				// Enable the Start button
 	};												// and wait for the User to press it.
@@ -317,6 +320,7 @@ public class UserInterface {
 	 */
 	private void stopConway() {
 		// Your code goes here to display the current state of the board.
+		
 		System.out.println("Game is stopping....");
 		System.exit(0);
 	}
@@ -326,13 +330,14 @@ public class UserInterface {
 	 */
 	public void runSimulation(){
 		// Use the toggle to flip back and forth between the current generation and next generation boards.
-		window.getChildren().remove(myCanvas);
+		
 		// Your code goes here...
-		myCanvas = new Pane();
 		
-		myBoard.nextGen();
+		window.getChildren().remove(myCanvas);   // Remove previous generation canvas from gui 
+		myCanvas = new Pane();                   // Fresh canvas
 		
-		popCanvas(myCanvas);
+		myBoard.nextGen();                       // Next generation
+		popCanvas();
 		window.getChildren().add(myCanvas);
 	}
 
@@ -413,14 +418,18 @@ public class UserInterface {
 		return true;							// End of file found 
 	}
 	
-	
-	public void popCanvas(Pane pane) {
-		for (int x=1;x < myBoard.board.length;x++) {
-			for (int y=1;y < myBoard.board.length;y++) {
+	/**
+	 * Method to populate a given canvas with the current state of the board
+	 * In our case we are considering myCanvas as the pane to update
+	 */
+	public void popCanvas() {
+		for (int x=0;x < myBoard.board.length;x++) {
+			for (int y=0;y < myBoard.board.length;y++) {
 				if (myBoard.board[x][y].getStatus()) {
 					Rectangle rect = new Rectangle(cellSize-1,cellSize-1,Color.BLACK);
-					rect.relocate(x*6, y*6);
-					pane.getChildren().add(rect);
+					rect.setX(x*6);
+					rect.setY(y*6);
+					myCanvas.getChildren().add(rect);
 				}
 			}
 		}
