@@ -78,12 +78,15 @@ public class UserInterface {
 	// These attributes define the Board used by the simulation and the graphical representation
 	// There are two Boards. The previous Board and the new Board.  Once the new Board has been
 	// displayed, it becomes the previous Board for the generation of the next new Board.
-	private Board oddGameBoard = new Board();		// The Board for odd frames of the animation
-	private Pane oddCanvas = new Pane();			// Pane that holds its graphical representation
+	//private Board oddGameBoard = new Board();		// The Board for odd frames of the animation
+	//private Pane oddCanvas = new Pane();			// Pane that holds its graphical representation
 	
-	private Board evenGameBoard =  new Board();	// The Board for even frames of the animation
-	private Pane evenCanvas = new Pane();			// Pane that holds its graphical representation
-
+	//private Board evenGameBoard =  new Board();	// The Board for even frames of the animation
+	//private Pane evenCanvas = new Pane();			// Pane that holds its graphical representation
+	
+	private Pane myCanvas = new Pane();
+	private Board myBoard = new Board();
+	
 	private boolean toggle = true;					// A two-state attribute that specifies which
 													// is the previous Board and which is the new
 	
@@ -269,6 +272,8 @@ public class UserInterface {
 		scanner_Input = null;
 		try {
 			// Your code goes here......
+			myBoard.setSize(boardSizeHeight);
+			myBoard.createBoard();
 			scanner_Input = new Scanner(new File(str_FileName));
 			while (scanner_Input.hasNextLine()) {
 				int x_pos;
@@ -278,6 +283,7 @@ public class UserInterface {
 				scanner_Line = new Scanner(line);
 				x_pos = scanner_Line.nextInt();
 				y_pos = scanner_Line.nextInt();
+				myBoard.board[x_pos][y_pos].setStatus(true);
 				
 			}
 			
