@@ -418,7 +418,7 @@ public class UserInterface {
 		for (int x=1;x < myBoard.board.length;x++) {
 			for (int y=1;y < myBoard.board.length;y++) {
 				if (myBoard.board[x][y].getStatus()) {
-					Rectangle rect = new Rectangle(cellSize,cellSize,Color.BLACK);
+					Rectangle rect = new Rectangle(cellSize-1,cellSize-1,Color.BLACK);
 					rect.relocate(x*6, y*6);
 					pane.getChildren().add(rect);
 				}
