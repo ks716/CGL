@@ -274,7 +274,7 @@ public class UserInterface {
 		scanner_Input = null;
 		try {
 			// Your code goes here......
-			myBoard.setSize(boardSizeHeight);
+			myBoard.setSize(boardSizeHeight-3);
 			myBoard.createBoard();
 			scanner_Input = new Scanner(new File(str_FileName));
 			while (scanner_Input.hasNextLine()) {
@@ -332,7 +332,9 @@ public class UserInterface {
 		// Use the toggle to flip back and forth between the current generation and next generation boards.
 		
 		// Your code goes here...
-		
+		if (myBoard.iter == 1000) {
+			stopConway();
+		}
 		window.getChildren().remove(myCanvas);   // Remove previous generation canvas from gui 
 		myCanvas = new Pane();                   // Fresh canvas
 		
